@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+         {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="{% static 'CSS/home.css' %}" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ </head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark px-0" style="background-color: #0c3592;">
+  <div class="container-xl">
+    <!-- Navbar toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <!-- Nav -->
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="{% url 'index' %}" aria-current="page"><i class="fas fa-home"></i> Home</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div class="container" id="container">
+      <div class="row">
+          <div class="main_container">
+              <div class="search_container">
+                 <form id="employee_name_search">
+                    <input type="text" class="form-control" placeholder="Enter Employee name" id="emp_name" name="emp_name"/>
+                    <button type="submit" class="btn" id="emp_name_btn"><i class="fas fa-search"></i> Search Employee</button>
+                 </form>
+              </div>
+              <div class="filter_container">
+                  <form id="employee_filter_search">
+<!--                      <div class="row">-->
+                    <select id="emp_dept" name="emp_dept" class="form-select" aria-label="Default select example">
+                      <option value="" selected>Select Department</option>
+                      {% for department in departments %}
+                        <option value="{{department.department_name.value}}">{{department.department_name.value}}</option>
+                      {% endfor %}
+                    </select>
+                  <select id="emp_role" name="emp_role" class="form-select" aria-label="Default select example">
+                      <option value="" selected>Select Role</option>
+                      {% for role in roles %}
+                        <option value="{{role.role_name.value}}">{{role.role_name.value}}</option>
+                      {% endfor %}
+                  </select>
+                  <select id="emp_branch" name="emp_branch" class="form-select" aria-label="Default select example">
+                      <option value="" selected>Select Branch</option>
+                      {% for branch in branches %}
+                        <option value="{{branch.branch_name.value}}">{{branch.branch_name.value}}</option>
+                      {% endfor %}
+                  </select>
+                  <select id="emp_employ_type" name="emp_employ_type" class="form-select" aria-label="Default select example">
+                      <option value="" selected>Select Employment Type</option>
+                      {% for employment in employment_type %}
+                        <option value="{{employment.employment_name.value}}">{{employment.employment_name.value}}</option>
+                      {% endfor %}
+                  </select>
+                  <select id="emp_leave" name="emp_leave" class="form-select" aria-label="Default select example">
+                      <option value="" selected>Select Leave Type</option>
+                      {% for leave in leaves %}
+                        <option value="{{leave.leave_name.value}}">{{leave.leave_name.value}}</option>
+                      {% endfor %}
+                  </select>
+                  <button type="submit" class="btn" id="emp_filter_btn"> <i class="fas fa-filter"></i> Filter</button>
+<!--                          </div>-->
+                      </form>
+              </div>
+<!--              <div class="selected_filter_container">-->
+<!--                  <span class="selected_filter">-->
+<!--                      ONE <i class="far fa-window-close"></i>-->
+<!--                  </span>-->
+<!--              </div>-->
+              <div class="table_container">
+                  <table id="employee_table">
+                  <thead>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Branch</th>
+                    <th>Experience</th>
+                    <th>Employment Type</th>
+                    <th>Project</th>
+                    <th></th>
+                  </thead>
+                  <tbody id="employee_table_body">
+                  {% for employee in employees %}
+                    <tr>
+                      <td style="width: 200px;">{{employee.name.value}}</td>
+                      <td style="width: 200px;">{{employee.role_name.value}}</td>
+                      <td style="width: 200px;">{{employee.branch_name.value}}</td>
+                      <td style="width: 200px;">{{employee.level_name.value}}</td>
+                      <td style="width: 200px;">{{employee.employment_type_name.value}}</td>
+                      <td style="width: 200px;">{{employee.project_name.value}}</td>
+                      <td style="width: 250px;">
+                          <form action="/employee_details/" method="GET">
+                             <input type="text" class="form-control" name="employee_id" value="{{employee.employee_id.value}}" style="display:none"/>
+                             <button type="submit" class="btn-details"> <i class="fas fa-arrow-right"></i> View Details</button>
+                          </form>
+                       </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script src="{% static 'JS/script.js' %}" type="text/javascript"></script>
+</body>
+</html>

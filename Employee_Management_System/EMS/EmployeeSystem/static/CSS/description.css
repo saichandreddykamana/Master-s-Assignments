@@ -1,0 +1,34 @@
+.main_container{
+   text-align: -webkit-center;
+}
+
+.panel-primary{
+  text-align: left;
+}
+
+.panel-primary>.panel-heading {
+    color: #fff !important;
+    background-color: #0c3592 !important;
+    border-color: #0c3592 !important;
+    text-align: center !important;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.panel-body{
+  text-align: -webkit-center;
+}
+
+.panel-body > table{
+   width: 70%;
+}
+
+#panel-back-btn{
+    float: left;
+    padding: 5px 30px;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: white;
+    border-color: white;
+}

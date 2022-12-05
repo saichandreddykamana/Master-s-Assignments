@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&family=Roboto&display=swap');
+
+*{
+  list-style: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+ }
+
+/* === BASE HEADING === */
+
+body {
+  font-family: 'Poppins', 'Verdana', sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  display: block;
+  color: #444;
+}
+#emp_name_btn, #emp_filter_btn{
+  background: #0c3592;
+  color: white;
+  border-color: #0c3592;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.search_container{
+  padding: 20px 0px;
+  align-items: center;
+  display: flex;
+}
+
+#emp_name{
+  width: 60%;
+  border-radius: 0px;
+  font-family: Outfit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#emp_name_btn, #emp_filter_btn{
+  margin: 0px 20px;
+  border-radius: 0px;
+  font-family: Outfit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#emp_filter_btn{
+    padding: 0px 15px;
+    font-family: Outfit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.filter_container{
+  display: block;
+  padding: 0px;
+  margin: 0px;
+}
+
+#emp_employ_type, #emp_dept, #emp_role, #emp_leave, #emp_branch{
+  border-radius: 0px;
+  width: 25%;
+  margin: 10px 0px 0px 0px;
+  font-family: Outfit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#container{
+  min-width: 1476px;
+  margin-top: 50px;
+}
+
+.selected_filter_container{
+   margin: 20px 0px;
+}
+
+.far{
+  color:red;
+  padding: 0px 0px 0px 15px;
+  cursor: pointer;
+}
+
+.selected_filter{
+  padding: 7px 20px;
+  background: #ebebeb;
+  border-radius: 2px;
+  align-items: center;
+  border: 1px solid #080808f2;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.btn-details{
+   margin: 0px 20px;
+   border-radius: 0px;
+   font-family: Outfit;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   background: #0c3592;
+   color: white;
+   border-color: #0c3592;
+   border: none;
+   padding: 5px 20px;
+}
+
+table {
+  width: -webkit-fill-available;
+  border-spacing: 0;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.table_container{
+  margin: 20px 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+thead {
+ visibility: hidden;
+ position: absolute;
+ width: 0;
+ height: 0;
+}
+
+th {
+  background: #0c3592;
+  color: #fff;
+}
+
+td:nth-child(1) {
+  background: #215A8E;
+  color: #fff;
+  border-radius: 1em 1em 0 0;
+}
+
+th, td {
+  padding: 1em;
+  font-family: Outfit;
+}
+
+tr, td {
+  display: block;
+}
+
+td {
+  position: relative;
+}
+
+td::before {
+  content: attr(data-label);
+  position: absolute;
+  left: 0;
+  padding-left: 1em;
+  font-weight: 600;
+  font-size: .9em;
+  text-transform: uppercase;
+}
+
+tr {
+  margin-bottom: 1.5em;
+  border: 1px solid #ddd;
+  border-radius: 1em;
+}
+
+tr:last-of-type {
+  margin-bottom: 0;
+}
+
+td:nth-child(n+2):nth-child(odd) {
+  background-color: #ddd;
+}
+
+@media only screen and (min-width: 768px) {
+
+  table {
+    border: 1px solid #ddd;
+    border-radius: 0px;
+  }
+
+  .filter_container{
+    display: flex;
+  }
+
+  #emp_filter_btn{
+    margin: 0px;
+    padding: 5px 15px;
+  }
+
+  #emp_employ_type, #emp_dept, #emp_role, #emp_leave, #emp_branch{
+    margin: 0px 10px 0px 0px;
+  }
+
+  .filter_container > form {
+     display: flex;
+  }
+
+  .search_container > form {
+     display: flex;
+     width: -webkit-fill-available;
+  }
+
+
+  thead {
+    visibility: visible;
+    position: relative;
+  }
+
+  th {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: .9em;
+  }
+
+  tr {
+    display: table-row;
+    border: none;
+    border-radius: 0;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+  td {
+    display: table-cell;
+  }
+
+  td::before {
+    content: none;
+  }
+
+  td:nth-child(1) {
+    background: transparent;
+    color: #444;
+    border-radius: 0;
+  }
+
+  td:nth-child(n+2):nth-child(odd) {
+    background-color: transparent;
+  }
+}
+
